@@ -32,28 +32,9 @@ func Analyze(expr string) bool {
 	return stack.Empty()
 }
 
-func priority(c string) int {
-	switch c {
-	case "(":
-		return 1
-	case "+":
-		return 2
-	case "-":
-		return 2
-	case "*":
-		return 3
-	case "/":
-		return 3
-	case "^":
-		return 4
-	default:
-		return 0
-	}
-}
-
 // IsOperator verifica se o caracter é um operador
 func IsOperator(c uint8) bool {
-	return strings.ContainsAny(string(c), "+ & - & * & /")
+	return strings.ContainsAny(string(c), "+ & - & * & / & ^")
 }
 
 // IsOperand verifica se o caracter é um operando
