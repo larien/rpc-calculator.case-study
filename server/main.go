@@ -11,6 +11,11 @@ import (
 	"strings"
 )
 
+func Register(server *rpc.Server, zig shared.Arith) {
+	// Registra a interface Ziguifryda com o nome de "Ziguifryda"
+	server.RegisterName("Ziguifryda", zig)
+}
+
 // ReadFromInput lê a expressão do usuário - RETIRAR APÓS IMPLEMENTAÇÃO
 func ReadFromInput() (string, error) {
 
@@ -32,7 +37,7 @@ func main() {
 	server := rpc.NewServer()
 
 	// Registra a estrutura criada acima
-	serverrpc.Register(server, zig)
+	Register(server, zig)
 
 	// registers an HTTP handler for RPC messages on rpcPath, and a debugging handler on debugPath
 	server.HandleHTTP("/", "/debug")

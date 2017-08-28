@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"net/rpc"
 	//"shared" //Path to the package contains shared struct
 )
@@ -15,7 +16,13 @@ func main() {
 		log.Fatal("Erro:", err)
 	}
 
-	// Cria uma estrutura que recebe todos os método.
+	// Cria roteador para servir à API para comunicação com front end
+	router := NewRouter()
+
+	// Executa servidor em localhost na porta 8080
+	log.Fatal(http.ListenAndServe(":8080", router))
+
+	// Cria uma estrutura que recebe todos os métodos.
 	ziguifryda := &Ziguifryda{client: client}
 
 	fmt.Println(ziguifryda.Multiply(5, 6))
