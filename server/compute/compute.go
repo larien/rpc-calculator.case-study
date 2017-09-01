@@ -128,6 +128,10 @@ func Convert(expr string) string {
 	return strings.TrimSpace(postfix)
 }
 
+func Calculate(posfix string) float32 {
+	// TODO
+}
+
 // replace substitui os caracteres '[', ']', '{' e '}' por '(' e ')'
 func replace(expr string) string {
 

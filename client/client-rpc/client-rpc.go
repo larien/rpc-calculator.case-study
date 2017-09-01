@@ -5,6 +5,7 @@ import (
 	"net/rpc"
 )
 
+// Args contém a expressão inserida pelo usuário
 type Args struct {
 	Expression string
 }
@@ -22,5 +23,5 @@ func (t *Ziguifryda) SendExpression(exp string) (float32, error) {
 	if err != nil {
 		log.Fatal("Erro", err)
 	}
-	return 0, reply
+	return reply, nil
 }

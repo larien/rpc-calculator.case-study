@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"net/rpc"
@@ -25,5 +24,5 @@ func main() {
 	// Cria uma estrutura que recebe todos os métodos.
 	ziguifryda := &Ziguifryda{client: client}
 
-	fmt.Println(ziguifryda.Multiply(5, 6))
+	//fmt.Println(ziguifryda.Multiply(5, 6))
 }
