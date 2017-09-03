@@ -6,6 +6,6 @@ type Args struct {
 }
 
 type Reply struct {
-	Resp float32
+	Resp float64
 	Success bool
 }
