@@ -7,7 +7,7 @@ import (
 )
 
 // SendExpression é a função que envia a expressão inserida pelo usuário para o servidor calcular
-func SendExpression(client *rpc.Client, exp string) (float32, error) {
+func SendExpression(client *rpc.Client, exp string) (float64, error) {
 	args := common.Args{Expression: exp}
 
 	var reply common.Reply
