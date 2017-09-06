@@ -1,0 +1,197 @@
+﻿<Window x:Class="CalculadoraRPC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculadoraRPC"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="375" Width="675">
+    <Border BorderBrush="Black" BorderThickness="1" Margin="0" Background="Gray">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="brd_Display" Style="{StaticResource CalculatorDisplayBorder}" Grid.ColumnSpan="7" Grid.Column="1">
+                <TextBlock x:Name="tbk_DisplayContent" Style="{StaticResource CalculatorDisplayContent}"/>
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="0" Grid.Row="0">
+                <Button Style="{StaticResource CalculatorSpecialButton}" Content="C" Click="CalculatorClearButton_Click"/>
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="8" Grid.Row="0">
+                <Button Style="{StaticResource CalculatorButton}" Content="&lt;-" Click="CalculatorBackspaceButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="8" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="(" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="8" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content=")" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="8" Grid.RowSpan="2" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorSpecialButton-Orange}" Content="=" Click="CalculatorEqualButton_Click" />
+            </Border>
+
+            <!-- Numbers -->
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="4" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorButton}" Content="0" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="4" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorButton}" Content="1" Click="CalculatorButton_Click" />
+            </Border>
+            
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="5" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorButton}" Content="2" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="6" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorButton}" Content="3" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="4" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content="4" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="5" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content="5" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="6" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content="6" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="4" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="7" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="5" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="8" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="6" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="9" Click="CalculatorButton_Click" />
+            </Border>
+            <!-- End of Numbers -->
+            
+            <!-- Basic Operators -->
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="7" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="+" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="7" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content="-" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="7" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorButton}" Content="*" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="7" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorButton}" Content="/" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="6" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorButton}" Content="%" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="5" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorButton}" Content="." Click="CalculatorButton_Click" />
+            </Border>
+            <!-- End of Basic Operators -->
+            
+            <!-- Trigonometric Functions -->
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="0" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="asin" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="0" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="acos" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="0" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="atan" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="0" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="acot" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="1" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="sin" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="1" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="cos" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="1" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="tan" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="1" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorSpecialButton-Green}" Content="cot" Click="CalculatorFunctionButton_Click" />
+            </Border>
+            <!-- End of Trigonometric Functions -->
+            
+            <!-- Constants -->
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="3" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="e" Click="CalculatorButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="3" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content="pi" Click="CalculatorButton_Click" />
+            </Border>
+            <!-- End of Constants-->
+
+            <!-- Basic Functions -->
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="3" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorButton}" Content="sqrt" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="3" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorButton}" Content="abs" Click="CalculatorFunctionButton_Click" />
+            </Border>
+            <!-- End of Basic Functions-->
+
+            <!-- Advanced Functions -->
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="2" Grid.Row="1">
+                <Button Style="{StaticResource CalculatorButton}" Content="log" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="2" Grid.Row="2">
+                <Button Style="{StaticResource CalculatorButton}" Content="ln" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="2" Grid.Row="3">
+                <Button Style="{StaticResource CalculatorButton}" Content="lg" Click="CalculatorFunctionButton_Click" />
+            </Border>
+
+            <Border Style="{StaticResource CalculatorGridCellBorder}" Grid.Column="2" Grid.Row="4">
+                <Button Style="{StaticResource CalculatorButton}" Content="mod" Click="CalculatorFunctionButton_Click" />
+            </Border>
+            <!-- End of Advanced Functions-->
+
+
+        </Grid>
+    </Border>
+</Window>
