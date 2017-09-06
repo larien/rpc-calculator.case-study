@@ -21,27 +21,28 @@ namespace CalculadoraRPC
     public static class CalcController
     {
         private static JsonData itemData;
-        private static string url = "http://httpbin.org/post";
+        private static string url = "http://localhost:8080/main/calculadora";
         private static readonly HttpClient client = new HttpClient();
         
         public async static Task<string> Calculate()
         {
-            Person person = new Person();
+            //ExpressionModel expr = new ExpressionModel();
 
-            person.Name = "William Shakespeare";
-            person.Age = 51;
-            person.Birthday = new DateTime(1564, 4, 26);
+            //expr.Expression = "(1 + 4)";
+            //expr.Value = "";
 
-            string json_person = JsonMapper.ToJson(person);
+            //string json_expr = JsonMapper.ToJson(expr);
 
 
-            var content = new StringContent(json_person, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(url, content);
-            var responseString = await response.Content.ReadAsStringAsync();
+            //var content = new StringContent(json_expr, Encoding.UTF8, "application/json");
+            //var response = await client.PostAsync(url, content);
+            //var responseString = await response.Content.ReadAsStringAsync();
+
+            var responseString = await client.GetStringAsync(url);
 
 
             itemData = JsonMapper.ToObject(responseString);
-            return itemData["json"]["Name"].ToString();
+            return responseString;
         }
     }
 }

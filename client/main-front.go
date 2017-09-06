@@ -1,28 +1,30 @@
 package main
 
 import (
-    "github.com/gorilla/mux"
-    "log"
-    "net/http"
-    "encoding/json"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
-func main(){
-    log.Println("Iniciando main - conectando com front")
+func main() {
+	log.Println("Iniciando main - conectando com front")
 
-    router := mux.NewRouter()
+	router := mux.NewRouter()
 
-    api := router.PathPrefix("/main/").Subrouter()
-    setupTestEndpoints(api)
+	api := router.PathPrefix("/main/").Subrouter()
+	setupTestEndpoints(api)
 
-    //fs := http.FileServer(http.Dir())
-    http.ListenAndServe(":8080",router)
+	//fs := http.FileServer(http.Dir())
+	http.ListenAndServe(":8080", router)
 
 }
 
-func setupTestEndpoints (api *mux.Router){
-    log.Println("Chegou aqui1")
-    api.HandleFunc("/calculadora", GetOnly(Calculator)).Methods("GET")
+func setupTestEndpoints(api *mux.Router) {
+	log.Println("Chegou aqui1")
+	api.HandleFunc("/calculadora", GetOnly(Calculate)).Methods("GET")
 }
 
 // serveResult converte um objeto para formato JSON e o envia para o cliente
@@ -31,16 +33,16 @@ func serveResult(w http.ResponseWriter, v interface{}) {
 	json.NewEncoder(w).Encode(v)
 }
 
-func Calculator(w http.ResponseWriter, r *http.Request){
-    log.Println("Chegou aqui2")
+func Calculate(w http.ResponseWriter, r *http.Request) {
+	log.Println("Chegou aqui2")
 
-    var res struct{
-        Resposta float64
-    }
+	var res struct {
+		Result float64
+	}
 
-    res.Resposta = 50.4
+	res.Result = 50.4
 
-    serveResult(w, res) // res - struct
+	serveResult(w, res) // res - struct
 }
 
 // serverErrorEnvelope é um envelope dos erros retornados
@@ -64,23 +66,23 @@ func serveInternalError(w http.ResponseWriter, msg string, args ...interface{}) 
 type handler func(w http.ResponseWriter, r *http.Request)
 
 func GetOnly(h handler) handler {
-	
-		return func(w http.ResponseWriter, r *http.Request) {
-			if r.Method == "GET" {
-				h(w, r)
-				return
-			}
-			http.Error(w, "get only", http.StatusMethodNotAllowed)
+
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "GET" {
+			h(w, r)
+			return
 		}
+		http.Error(w, "get only", http.StatusMethodNotAllowed)
 	}
-	
-	func PostOnly(h handler) handler {
-	
-		return func(w http.ResponseWriter, r *http.Request) {
-			if r.Method == "POST" {
-				h(w, r)
-				return
-			}
-			http.Error(w, "post only", http.StatusMethodNotAllowed)
+}
+
+func PostOnly(h handler) handler {
+
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "POST" {
+			h(w, r)
+			return
 		}
+		http.Error(w, "post only", http.StatusMethodNotAllowed)
 	}
+}

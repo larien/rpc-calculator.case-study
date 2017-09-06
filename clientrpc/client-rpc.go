@@ -3,7 +3,7 @@ package clientrpc
 import (
 	"log"
 	"net/rpc"
-	"common"
+	"calculadora/common"
 )
 
 // SendExpression é a função que envia a expressão inserida pelo usuário para o servidor calcular
