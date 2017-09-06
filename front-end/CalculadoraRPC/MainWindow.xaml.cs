@@ -44,9 +44,9 @@ namespace CalculadoraRPC
                 tbk_DisplayContent.Text = tbk_DisplayContent.Text.Remove(tbk_DisplayContent.Text.Length - 1);
         }
 
-        private void CalculatorFunctionButton_Click(object sender, RoutedEventArgs e)
+        private async void CalculatorFunctionButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            tbk_DisplayContent.Text = await CalcController.Calculate();
         }
 
         private void CalculatorEqualButton_Click(object sender, RoutedEventArgs e)
