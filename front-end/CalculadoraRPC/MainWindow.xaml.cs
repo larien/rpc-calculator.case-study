@@ -46,12 +46,13 @@ namespace CalculadoraRPC
 
         private async void CalculatorFunctionButton_Click(object sender, RoutedEventArgs e)
         {
-            tbk_DisplayContent.Text = await CalcController.Calculate();
+            Button btn_Sender = sender as Button;
+            tbk_DisplayContent.Text = await CalcController.CalculateFunction(btn_Sender.Content as String, tbk_DisplayContent.Text);
         }
 
-        private void CalculatorEqualButton_Click(object sender, RoutedEventArgs e)
+        private async void CalculatorEqualButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            tbk_DisplayContent.Text = await CalcController.CalculateExpression(tbk_DisplayContent.Text);
         }
     }
 }

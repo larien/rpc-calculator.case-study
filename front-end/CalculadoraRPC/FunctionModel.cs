@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CalculadoraRPC
 {
-    class ExpressionModel
+    class FunctionModel
     {
-        public string Expression { get; set; }
+        public string Function { get; set; }
+        public string Value { get; set; }
     }
 }
